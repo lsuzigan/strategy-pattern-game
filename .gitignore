@@ -7,6 +7,17 @@
 # BlueJ files
 *.ctxt
 
+## InteliJ files
+*.idea
+# Default ignored files
+/shelf/
+/workspace.xml
+# Datasource local storage ignored files
+/../../../../../../../:\My Drive\FACUL\5ºPeríodo\POO2\Praticas\.idea/dataSources/
+/dataSources.local.xml
+# Editor-based HTTP Client requests
+/httpRequests/
+
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
 

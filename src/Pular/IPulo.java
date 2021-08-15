@@ -1,6 +1,6 @@
 package Pular;
 
-public interface IPular
+public interface IPulo
 {
 	void Pular();
 }

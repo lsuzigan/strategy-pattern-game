@@ -1,10 +1,18 @@
 package Personagem;
-import Pular.IPular;
+
+import Atacar.AtaqueForte;
+import Correr.CorrerMedio;
+import Pular.PuloMedio;
 
 public class PersonagemUm implements Personagem
 {
+	// Atributos do personagem
 	private double Vida;
-	private IPular TipoPulo;
+
+	// Acoes do personagem
+	private PuloMedio Pulo;
+	private CorrerMedio Corrida;
+	private AtaqueForte Ataque;
 
 	public PersonagemUm(double vida)
 	{
@@ -24,18 +32,18 @@ public class PersonagemUm implements Personagem
 	@Override
 	public void Pular()
 	{
-
+		Pulo.Pular();
 	}
 
 	@Override
 	public void Correr()
 	{
-
+		Corrida.Correr();
 	}
 
 	@Override
 	public void Atacar()
 	{
-
+		Ataque.Atacar();
 	}
 }

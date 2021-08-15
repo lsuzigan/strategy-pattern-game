@@ -1,6 +1,6 @@
 package Pular;
 
-public class PuloBaixo implements IPular
+public class PuloBaixo implements IPulo
 {
 
 	@Override

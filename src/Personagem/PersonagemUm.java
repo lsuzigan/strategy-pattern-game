@@ -4,29 +4,16 @@ import Atacar.AtaqueForte;
 import Correr.CorrerMedio;
 import Pular.PuloMedio;
 
-public class PersonagemUm implements Personagem
+public class PersonagemUm extends Personagem
 {
-	// Atributos do personagem
-	private double Vida;
-
 	// Acoes do personagem
 	private PuloMedio Pulo;
 	private CorrerMedio Corrida;
-	private AtaqueForte Ataque;
+	private AtaqueForte Ataque = new AtaqueForte();
 
 	public PersonagemUm(double vida)
 	{
-		Vida = vida;
-	}
-
-	public double getVida()
-	{
-		return Vida;
-	}
-
-	public void setVida(double vida)
-	{
-		Vida = vida;
+		super(vida);
 	}
 
 	@Override
@@ -42,8 +29,8 @@ public class PersonagemUm implements Personagem
 	}
 
 	@Override
-	public void Atacar()
+	public void Atacar(Personagem alvo)
 	{
-		Ataque.Atacar();
+		Ataque.Atacar(alvo);
 	}
 }

@@ -1,6 +1,8 @@
 package Atacar;
 
+import Personagem.Personagem;
+
 public interface IAtaque
 {
-	void Atacar();
+	void Atacar(Personagem alvo);
 }

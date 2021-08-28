@@ -1,6 +1,6 @@
-package Personagem;
+package Personagem.Inimigo;
 
-import Atacar.AtaqueForte;
+import Atacar.AtaqueMedio;
 import Correr.CorrerMedio;
 import Observar.Observado;
 import Observar.Observador;
@@ -8,14 +8,15 @@ import Personagem.Estado.EstadoForte;
 import Personagem.Estado.EstadoMorto;
 import Personagem.Estado.EstadoNormal;
 import Personagem.Estado.EstadoPerigo;
+import Personagem.Personagem;
 import Pular.PuloMedio;
 import Recompensa.Recompensa;
 
-public class PersonagemUm extends Personagem implements Observado
+public abstract class Inimigo extends Personagem implements Observador
 {
-	public PersonagemUm(int x, int y)
+	public Inimigo(int x, int y)
 	{
-		super(new AtaqueForte(), new CorrerMedio(), new PuloMedio(), x, y);
+		super(new AtaqueMedio(), new CorrerMedio(), new PuloMedio(), x, y);
 	}
 
 	@Override
@@ -28,7 +29,6 @@ public class PersonagemUm extends Personagem implements Observado
 	public void Correr(Personagem atacante, Personagem alvo, int x, int y)
 	{
 		super.getCorrida().Correr(atacante, alvo, x, y);
-		notificarObservador();
 	}
 
 	@Override
@@ -62,23 +62,9 @@ public class PersonagemUm extends Personagem implements Observado
 	}
 
 	@Override
-	public void adicionarObservador(Observador o)
+	public void atualizar(Observado o)
 	{
-		super.getObservadores().add(o);
-	}
-
-	@Override
-	public void removerObservador(Observador o)
-	{
-		super.getObservadores().remove(o);
-	}
-
-	@Override
-	public void notificarObservador()
-	{
-		for (var o : getObservadores())
-		{
-			o.atualizar(this);
-		}
+		var p = (Personagem) o;
+		Correr(this, p, p.getX(), p.getY());
 	}
 }

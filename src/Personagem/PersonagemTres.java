@@ -2,35 +2,80 @@ package Personagem;
 
 import Atacar.AtaqueForte;
 import Correr.CorrerRapido;
+import Observar.Observado;
+import Observar.Observador;
+import Personagem.Estado.EstadoForte;
+import Personagem.Estado.EstadoMorto;
+import Personagem.Estado.EstadoNormal;
+import Personagem.Estado.EstadoPerigo;
 import Pular.PuloBaixo;
+import Recompensa.Recompensa;
 
-public class PersonagemTres extends Personagem
+public class PersonagemTres extends Personagem implements Observado
 {
-	// Acoes do personagem
-	private PuloBaixo Pulo;
-	private CorrerRapido Corrida;
-	private AtaqueForte Ataque = new AtaqueForte();
-
-	public PersonagemTres(double vida)
+	public PersonagemTres(int x, int y)
 	{
-		super(vida);
+		super(new AtaqueForte(), new CorrerRapido(), new PuloBaixo(), x, y);
 	}
 
 	@Override
 	public void Pular()
 	{
-		Pulo.Pular();
+		super.getPulo().Pular();
 	}
 
 	@Override
-	public void Correr()
+	public void Correr(Personagem atacante, Personagem alvo, int x, int y)
 	{
-		Corrida.Correr();
+		super.getCorrida().Correr(atacante, alvo, x, y);
+		notificarObservador();
 	}
 
 	@Override
 	public void Atacar(Personagem alvo)
 	{
-		Ataque.Atacar(alvo);
+		super.getAtaque().Atacar(alvo);
+	}
+
+	@Override
+	public void PegarRecompensa(Recompensa r)
+	{
+		super.setVida(super.getVida() + r.Energia);
+
+		// checa o estado
+		if (super.getVida() > 0 && super.getVida() < 30 && !(super.getEstado() instanceof EstadoPerigo))
+		{
+			super.setEstado(new EstadoPerigo());
+		}
+		else if (super.getVida() >= 30 && super.getVida() < 70 && !(super.getEstado() instanceof EstadoNormal))
+		{
+			super.setEstado(new EstadoNormal());
+		}
+		else if (super.getVida() >= 70 && !(super.getEstado() instanceof EstadoForte))
+		{
+			super.setEstado(new EstadoForte());
+		}
+		else if (super.getVida() <= 0 && !(super.getEstado() instanceof EstadoMorto))
+		{
+			super.setEstado(new EstadoMorto());
+		}
+	}
+
+	@Override
+	public void adicionarObservador(Observador o)
+	{
+
+	}
+
+	@Override
+	public void removerObservador(Observador o)
+	{
+
+	}
+
+	@Override
+	public void notificarObservador()
+	{
+
 	}
 }

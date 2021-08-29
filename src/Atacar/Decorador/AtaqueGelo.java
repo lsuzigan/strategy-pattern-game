@@ -1,4 +1,4 @@
-package Atacar;
+package Atacar.Decorador;
 
 import Personagem.Estado.EstadoForte;
 import Personagem.Estado.EstadoMorto;
@@ -6,13 +6,12 @@ import Personagem.Estado.EstadoNormal;
 import Personagem.Estado.EstadoPerigo;
 import Personagem.Personagem;
 
-public class AtaqueMedio extends Ataque
+public class AtaqueGelo extends Decorador
 {
-	private static double ValorAtaque = 12.5;
-
-	public AtaqueMedio()
+	public AtaqueGelo(double ataque)
 	{
-		super(12.5);
+		super(ataque + 5);
+		System.out.println("Recebe ataque de fogo");
 	}
 
 	@Override
@@ -20,7 +19,7 @@ public class AtaqueMedio extends Ataque
 	{
 		if (((atacante.getX() - alvo.getX()) < 5) && ((atacante.getY() - alvo.getY()) < 5))
 		{
-			System.out.println("\tRealizando ataque medio: " + super.getValorAtaque());
+			System.out.println("\tRealizando ataque forte: " + super.getValorAtaque());
 			var ataqueDefendido = alvo.getEscudo().Defender(super.getValorAtaque());
 			alvo.setVida(alvo.getVida() - ataqueDefendido);
 

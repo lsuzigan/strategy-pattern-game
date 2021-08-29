@@ -1,3 +1,4 @@
+import Atacar.Decorador.AtaqueFogo;
 import Personagem.Inimigo.Inimigo;
 import Personagem.Inimigo.Ogro;
 import Personagem.PersonagemUm;
@@ -14,6 +15,7 @@ public class Main
 		frame.setSize(1200, 800);
 		frame.setVisible(true);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		jogo.personagem.setAtaque(new AtaqueFogo(jogo.personagem.getAtaque().getValorAtaque()));
 		jogo.personagem.adicionarObservador(jogo.ogro);
 		var vidaP = jogo.personagem.getVida();
 		var vidaO = jogo.ogro.getVida();

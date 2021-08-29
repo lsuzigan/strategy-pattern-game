@@ -1,7 +1,5 @@
 package Personagem.Estado;
 
-import Atacar.IAtaque;
-import Correr.ICorrida;
 import Personagem.Personagem;
 
 public interface IEstado

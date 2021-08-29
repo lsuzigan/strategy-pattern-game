@@ -6,17 +6,20 @@ import Personagem.Estado.EstadoNormal;
 import Personagem.Estado.EstadoPerigo;
 import Personagem.Personagem;
 
-public class AtaqueForte implements IAtaque
+public class AtaqueForte extends Ataque
 {
-	private static double ValorAtaque = 20.0;
+	public AtaqueForte()
+	{
+		super(20.0);
+	}
 
 	@Override
 	public void Atacar(Personagem atacante, Personagem alvo)
 	{
 		if (((atacante.getX() - alvo.getX()) < 5) && ((atacante.getY() - alvo.getY()) < 5))
 		{
-			System.out.println("\tRealizando ataque forte: " + ValorAtaque);
-			var ataqueDefendido = alvo.getEscudo().Defender(ValorAtaque);
+			System.out.println("\tRealizando ataque forte: " + super.getValorAtaque());
+			var ataqueDefendido = alvo.getEscudo().Defender(super.getValorAtaque());
 			alvo.setVida(alvo.getVida() - ataqueDefendido);
 
 			// checa o estado

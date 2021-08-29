@@ -1,6 +1,5 @@
 package Personagem;
 
-import Atacar.IAtaque;
 import Correr.ICorrida;
 import Escudo.IEscudo;
 import Observar.Observador;
@@ -15,7 +14,7 @@ import java.util.ArrayList;
 public abstract class Personagem
 {
 	private double Vida;
-	private IAtaque Ataque;
+	private Atacar.Ataque Ataque;
 	private ICorrida Corrida;
 	private IPulo Pulo;
 	private IEstado Estado;
@@ -24,7 +23,7 @@ public abstract class Personagem
 	private ArrayList<Observador> Observadores = new ArrayList<Observador>();
 	private IEscudo Escudo;
 
-	public Personagem(IAtaque ataque, ICorrida corrida, IPulo pulo, int x, int y, IEscudo escudo)
+	public Personagem(Atacar.Ataque ataque, ICorrida corrida, IPulo pulo, int x, int y, IEscudo escudo)
 	{
 		Vida = 70;
 		Ataque = ataque;
@@ -66,12 +65,12 @@ public abstract class Personagem
 		Vida = vida;
 	}
 
-	public IAtaque getAtaque()
+	public Atacar.Ataque getAtaque()
 	{
 		return Ataque;
 	}
 
-	public void setAtaque(IAtaque ataque)
+	public void setAtaque(Atacar.Ataque ataque)
 	{
 		Ataque = ataque;
 	}

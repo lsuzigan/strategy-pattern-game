@@ -4,6 +4,7 @@ import Atacar.AtaqueForte;
 import Atacar.AtaqueMedio;
 import Correr.CorrerMedio;
 import Correr.CorrerRapido;
+import Escudo.Escudo;
 import Observar.Observado;
 import Observar.Observador;
 import Personagem.Estado.EstadoForte;
@@ -18,7 +19,7 @@ public class PersonagemDois extends Personagem implements Observado
 {
 	public PersonagemDois(int x, int y)
 	{
-		super(new AtaqueMedio(), new CorrerRapido(), new PuloAlto(), x, y);
+		super(new AtaqueMedio(), new CorrerRapido(), new PuloAlto(), x, y, new Escudo(10.0));
 	}
 
 	@Override
@@ -30,14 +31,14 @@ public class PersonagemDois extends Personagem implements Observado
 	@Override
 	public void Correr(Personagem atacante, Personagem alvo, int x, int y)
 	{
-		super.getCorrida().Correr(atacante, alvo, x, y);
+		super.getCorrida().Correr(atacante, alvo);
 		notificarObservador();
 	}
 
 	@Override
-	public void Atacar(Personagem alvo)
+	public void Atacar(Personagem atacante, Personagem alvo)
 	{
-		super.getAtaque().Atacar(alvo);
+		super.getAtaque().Atacar(atacante, alvo);
 	}
 
 	@Override

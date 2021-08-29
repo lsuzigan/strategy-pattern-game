@@ -2,6 +2,7 @@ package Personagem;
 
 import Atacar.AtaqueForte;
 import Correr.CorrerRapido;
+import Escudo.Escudo;
 import Observar.Observado;
 import Observar.Observador;
 import Personagem.Estado.EstadoForte;
@@ -15,7 +16,7 @@ public class PersonagemTres extends Personagem implements Observado
 {
 	public PersonagemTres(int x, int y)
 	{
-		super(new AtaqueForte(), new CorrerRapido(), new PuloBaixo(), x, y);
+		super(new AtaqueForte(), new CorrerRapido(), new PuloBaixo(), x, y, new Escudo(0.0));
 	}
 
 	@Override
@@ -27,14 +28,14 @@ public class PersonagemTres extends Personagem implements Observado
 	@Override
 	public void Correr(Personagem atacante, Personagem alvo, int x, int y)
 	{
-		super.getCorrida().Correr(atacante, alvo, x, y);
+		super.getCorrida().Correr(atacante, alvo);
 		notificarObservador();
 	}
 
 	@Override
-	public void Atacar(Personagem alvo)
+	public void Atacar(Personagem atacante, Personagem alvo)
 	{
-		super.getAtaque().Atacar(alvo);
+		super.getAtaque().Atacar(atacante, alvo);
 	}
 
 	@Override

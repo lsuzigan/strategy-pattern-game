@@ -2,6 +2,7 @@ package Personagem.Inimigo;
 
 import Atacar.AtaqueMedio;
 import Correr.CorrerMedio;
+import Escudo.Escudo;
 import Observar.Observado;
 import Observar.Observador;
 import Personagem.Estado.EstadoForte;
@@ -16,7 +17,7 @@ public abstract class Inimigo extends Personagem implements Observador
 {
 	public Inimigo(int x, int y)
 	{
-		super(new AtaqueMedio(), new CorrerMedio(), new PuloMedio(), x, y);
+		super(new AtaqueMedio(), new CorrerMedio(), new PuloMedio(), x, y, new Escudo(50.0));
 	}
 
 	@Override
@@ -28,13 +29,17 @@ public abstract class Inimigo extends Personagem implements Observador
 	@Override
 	public void Correr(Personagem atacante, Personagem alvo, int x, int y)
 	{
-		super.getCorrida().Correr(atacante, alvo, x, y);
+		super.getCorrida().Correr(atacante, alvo);
+		if (((atacante.getX() - alvo.getX()) == 0) && ((atacante.getY() - alvo.getY()) == 0))
+		{
+			atacante.Atacar(atacante, alvo);
+		}
 	}
 
 	@Override
-	public void Atacar(Personagem alvo)
+	public void Atacar(Personagem atacante, Personagem alvo)
 	{
-		super.getAtaque().Atacar(alvo);
+		super.getAtaque().Atacar(atacante, alvo);
 	}
 
 	@Override

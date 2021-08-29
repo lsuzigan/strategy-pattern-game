@@ -15,8 +15,13 @@ public class Main
 		frame.setSize(1200, 800);
 		frame.setVisible(true);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+		// Usando decorador do ataque
 		jogo.personagem.setAtaque(new AtaqueFogo(jogo.personagem.getAtaque().getValorAtaque()));
+
+		// Add observadores
 		jogo.personagem.adicionarObservador(jogo.ogro);
+
 		var vidaP = jogo.personagem.getVida();
 		var vidaO = jogo.ogro.getVida();
 		while (true)

@@ -4,8 +4,11 @@ import Atacar.Ataque;
 
 public abstract class Decorador extends Ataque
 {
-	public Decorador(double valorAtaque)
+	private Ataque Ataque;
+
+	public Decorador(Ataque ataque, double bonus)
 	{
-		super(valorAtaque);
+		super(ataque.getValorAtaque() + bonus);
+		Ataque = ataque;
 	}
 }

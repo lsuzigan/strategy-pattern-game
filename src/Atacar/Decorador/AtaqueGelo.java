@@ -1,5 +1,6 @@
 package Atacar.Decorador;
 
+import Atacar.Ataque;
 import Personagem.Estado.EstadoForte;
 import Personagem.Estado.EstadoMorto;
 import Personagem.Estado.EstadoNormal;
@@ -8,10 +9,10 @@ import Personagem.Personagem;
 
 public class AtaqueGelo extends Decorador
 {
-	public AtaqueGelo(double ataque)
+	public AtaqueGelo(Ataque ataque)
 	{
-		super(ataque + 5);
-		System.out.println("Recebe ataque de fogo");
+		super(ataque, 5);
+		System.out.println("Recebe ataque de gelo");
 	}
 
 	@Override

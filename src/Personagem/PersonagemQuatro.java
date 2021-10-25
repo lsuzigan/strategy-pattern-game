@@ -1,25 +1,18 @@
 package Personagem;
 
 import Atacar.AtaqueForte;
-import Atacar.AtaqueMedio;
 import Correr.CorrerMedio;
-import Correr.CorrerRapido;
 import Escudo.Escudo;
 import Observar.Observado;
 import Observar.Observador;
-import Personagem.Estado.EstadoForte;
-import Personagem.Estado.EstadoMorto;
-import Personagem.Estado.EstadoNormal;
-import Personagem.Estado.EstadoPerigo;
-import Pular.PuloAlto;
 import Pular.PuloMedio;
 import Recompensa.Recompensa;
 
-public class PersonagemDois extends Personagem implements Observado
+public class PersonagemQuatro extends Personagem implements Observado
 {
-	public PersonagemDois(int x, int y)
+	public PersonagemQuatro(int x, int y)
 	{
-		super(new AtaqueMedio(), new CorrerRapido(), new PuloAlto(), x, y, new Escudo(10.0));
+		super(new AtaqueForte(), new CorrerMedio(), new PuloMedio(), x, y, new Escudo(20.0));
 	}
 
 	@Override
@@ -50,18 +43,21 @@ public class PersonagemDois extends Personagem implements Observado
 	@Override
 	public void adicionarObservador(Observador o)
 	{
-
+		super.getObservadores().add(o);
 	}
 
 	@Override
 	public void removerObservador(Observador o)
 	{
-
+		super.getObservadores().remove(o);
 	}
 
 	@Override
 	public void notificarObservador()
 	{
-
+		for (var o : getObservadores())
+		{
+			o.atualizar(this);
+		}
 	}
 }

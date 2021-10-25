@@ -63,6 +63,7 @@ public abstract class Personagem
 	public void setVida(double vida)
 	{
 		Vida = vida;
+		Estado.checaEstado(this);
 	}
 
 	public Atacar.Ataque getAtaque()

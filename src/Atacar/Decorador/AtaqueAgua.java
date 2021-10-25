@@ -1,5 +1,5 @@
 package Atacar.Decorador;
-
+import Atacar.Ataque;
 import Personagem.Estado.EstadoForte;
 import Personagem.Estado.EstadoMorto;
 import Personagem.Estado.EstadoNormal;
@@ -8,9 +8,9 @@ import Personagem.Personagem;
 
 public class AtaqueAgua extends Decorador
 {
-	public AtaqueAgua(double ataque)
+	public AtaqueAgua(Ataque ataque)
 	{
-		super(ataque + 5);
+		super(ataque, 5);
 		System.out.println("Recebe ataque de fogo");
 	}
 

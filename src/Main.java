@@ -1,54 +1,77 @@
-import Atacar.Decorador.AtaqueFogo;
-import Personagem.Inimigo.Inimigo;
-import Personagem.Inimigo.Ogro;
-import Personagem.PersonagemUm;
-
-import javax.swing.*;
+import Personagem.Factory.AdvancedFactory;
+import Personagem.Factory.SimpleFactory;
+import Personagem.FactoryMethod;
 
 public class Main
 {
-	public static void main(String[] args) throws InterruptedException
+	public static void main(String[] args)
 	{
-		var jogo = new Jogo();
-		var frame = new JFrame("Guerra");
-		frame.add(jogo);
-		frame.setSize(1200, 800);
-		frame.setVisible(true);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
-		// Usando decorador do ataque
-		jogo.personagem.setAtaque(new AtaqueFogo(jogo.personagem.getAtaque().getValorAtaque()));
-
-		// Add observadores
-		jogo.personagem.adicionarObservador(jogo.ogro);
-
-		var vidaP = jogo.personagem.getVida();
-		var vidaO = jogo.ogro.getVida();
-		while (true)
+		/*
+		// Teste da pratica06 questao a
+		for (int i = 0; i < 5; i++)
 		{
-			if (jogo.personagem.getObservadores().size() == 0)
-			{
-				System.out.println("Inimigos derrotados");
-				break;
-			}
-
-			jogo.repaint();
-			jogo.personagem.Correr(jogo.personagem, jogo.ogro, 0, 0);
-
-			if (vidaP != jogo.personagem.getVida())
-			{
-				vidaP = jogo.personagem.getVida();
-				System.out.println("Personagem sofreu dano. Vida = " + jogo.personagem.getVida());
-			}
-
-			if (vidaO != jogo.ogro.getVida())
-			{
-				vidaO = jogo.ogro.getVida();
-				System.out.println("Ogro sofreu dano. Vida = " + jogo.ogro.getVida());
-			}
-
-			Thread.sleep(100);
+			var p = Personagem.SimpleFactory.PersonagemFactory.criaPersonagem(100 * i, 100 * i);
+			System.out.println("Personagem criado: "+ p);
 		}
+
+
+		 // Teste da pratica06 questao b
+		 for (int i = 0; i < 5; i++)
+		 {
+			var p = Personagem.Factory.PersonagemFactory.criaPersonagem(100 * i, 100 * i);
+			System.out.println("Personagem criado: "+ p);
+		 }
+		*/
+
+		var a = SimpleFactory.getInstance();
+		var b = AdvancedFactory.getInstance();
+	}
+}
+
+/* Old
+	// Main da primeira entrega das praticas
+//	public static void main(String[] args) throws InterruptedException
+//	{
+//		var jogo = new Jogo();
+//		var frame = new JFrame("Guerra");
+//		frame.add(jogo);
+//		frame.setSize(1200, 800);
+//		frame.setVisible(true);
+//		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//
+//		// Usando decorador do ataque
+//		jogo.personagem.setAtaque(new AtaqueFogo(jogo.personagem.getAtaque().getValorAtaque()));
+//
+//		// Add observadores
+//		jogo.personagem.adicionarObservador(jogo.ogro);
+//
+//		var vidaP = jogo.personagem.getVida();
+//		var vidaO = jogo.ogro.getVida();
+//		while (true)
+//		{
+//			if (jogo.personagem.getObservadores().size() == 0)
+//			{
+//				System.out.println("Inimigos derrotados");
+//				break;
+//			}
+//
+//			jogo.repaint();
+//			jogo.personagem.Correr(jogo.personagem, jogo.ogro, 0, 0);
+//
+//			if (vidaP != jogo.personagem.getVida())
+//			{
+//				vidaP = jogo.personagem.getVida();
+//				System.out.println("Personagem sofreu dano. Vida = " + jogo.personagem.getVida());
+//			}
+//
+//			if (vidaO != jogo.ogro.getVida())
+//			{
+//				vidaO = jogo.ogro.getVida();
+//				System.out.println("Ogro sofreu dano. Vida = " + jogo.ogro.getVida());
+//			}
+//
+//			Thread.sleep(100);
+//		}
 
 //		var p1 = new PersonagemUm(0, 0);
 //		System.out.println("Personagem tipo 1 criado. Vida = " + p1.getVida() + " | Posicao: (" + p1.getX() + "," + p1.getY() + ")");
@@ -71,8 +94,6 @@ public class Main
 //
 //			p1.Correr(p1, inimigo, 2, 2);
 //		}
-	}
-}
 
 
 //		p1.Atacar(inimigo);
@@ -102,3 +123,4 @@ public class Main
 //		p1.Atacar(inimigo);
 //		System.out.println("Ataque realizado no personagem 2 Vida = " + inimigo.getVida());
 //		System.out.println("Estado atual: " + inimigo.getEstado());
+*/
